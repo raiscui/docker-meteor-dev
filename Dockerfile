@@ -18,8 +18,8 @@ CMD ["/sbin/my_init"]
 
 # ...put your own build instructions here...
 
-RUN echo "root:gkdiyesl" | chpasswd \
-&& echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse" >> /etc/apt/sources.list \
+RUN echo "root:gkdiyesl" | chpasswd
+RUN echo "deb http://mirrors.163.com/ubuntu/ trusty main restricted universe multiverse" >> /etc/apt/sources.list \
 && echo "deb http://mirrors.163.com/ubuntu/ trusty-security main restricted universe multiverse" >> /etc/apt/sources.list \
 && echo "deb http://mirrors.163.com/ubuntu/ trusty-updates main restricted universe multiverse" >> /etc/apt/sources.list \
 && echo "deb http://mirrors.163.com/ubuntu/ trusty-proposed main restricted universe multiverse" >> /etc/apt/sources.list \
@@ -45,7 +45,4 @@ RUN apt-fast install git -y
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-EXPOSE 80
-EXPOSE 443
-EXPOSE 3000
-EXPOSE 22
+EXPOSE [80,443,3000,22]
